@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2025-09-25 16:29:47">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</application>
+<application_name>Everbridge Flow Designer</application_name>
+<application_scope>x_xma_eb_fd</application_scope>
+<application_version>1.0.8</application_version>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>Faster resolution for Security Incident Response (SIR) tickets by integrating with xMatters Flow Designer. Automatically contacts the Assignment Group via xMatters.
+Pre-Requisites
+1 Everbridge Flow Designer app for ServiceNow, available from the ServiceNow store. 
+2 Access to an xMatters instance with admin rights. 
+See xMatters labs on Github for installation notes.</description>
+<inserted/>
+<name>xMatters Security Incident Response</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>2a10de4483103210b4d2bfc6feaad309</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>richard.selby</sys_created_by>
+<sys_created_on>2025-09-25 16:29:46</sys_created_on>
+<sys_id>1f75768483183210b4d2bfc6feaad390</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>richard.selby</sys_updated_by>
+<sys_updated_on>2025-09-25 16:29:46</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</application>
+<category>customer</category>
+<comments/>
+<name>sys_scope_privilege_30bc6a8883d43210b4d2bfc6feaad378</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege"><sys_scope_privilege action="INSERT_OR_UPDATE"><operation>read</operation><source_scope display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</source_scope><status>requested</status><sys_class_name>sys_scope_privilege</sys_class_name><sys_created_by>richard.selby</sys_created_by><sys_created_on>2025-09-25 15:52:04</sys_created_on><sys_id>30bc6a8883d43210b4d2bfc6feaad378</sys_id><sys_mod_count>0</sys_mod_count><sys_name>sn_si_incident</sys_name><sys_package display_value="Everbridge Flow Designer" source="x_xma_eb_fd">8018d948dbed56102b317f93e2961979</sys_package><sys_policy/><sys_scope display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</sys_scope><sys_update_name>sys_scope_privilege_30bc6a8883d43210b4d2bfc6feaad378</sys_update_name><sys_updated_by>richard.selby</sys_updated_by><sys_updated_on>2025-09-25 15:52:04</sys_updated_on><target_name>sn_si_incident</target_name><target_scope display_value="Security Incident Response">82878663ff123100158bffffffffff67</target_scope><target_type>sys_db_object</target_type></sys_scope_privilege></record_update>]]></payload>
+<payload_hash>1849152076</payload_hash>
+<remote_update_set display_value="xMatters Security Incident Response">1f75768483183210b4d2bfc6feaad390</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>richard.selby</sys_created_by>
+<sys_created_on>2025-09-25 16:29:46</sys_created_on>
+<sys_id>1375768483183210b4d2bfc6feaad391</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>199819315ba0000001</sys_recorded_at>
+<sys_updated_by>richard.selby</sys_updated_by>
+<sys_updated_on>2025-09-25 16:29:46</sys_updated_on>
+<table/>
+<target_name>sn_si_incident</target_name>
+<type>Cross scope privilege</type>
+<update_domain>global</update_domain>
+<update_guid>3edc26483ad43210fa766b5e4452774a</update_guid>
+<update_guid_history>3edc26483ad43210fa766b5e4452774a:1849152076</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</application>
+<category>customer</category>
+<comments/>
+<name>sys_scope_privilege_d4ec2e8883d43210b4d2bfc6feaad3ee</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege"><sys_scope_privilege action="INSERT_OR_UPDATE"><operation>write</operation><source_scope display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</source_scope><status>requested</status><sys_class_name>sys_scope_privilege</sys_class_name><sys_created_by>richard.selby</sys_created_by><sys_created_on>2025-09-25 15:52:09</sys_created_on><sys_id>d4ec2e8883d43210b4d2bfc6feaad3ee</sys_id><sys_mod_count>0</sys_mod_count><sys_name>sn_si_incident</sys_name><sys_package display_value="Everbridge Flow Designer" source="x_xma_eb_fd">8018d948dbed56102b317f93e2961979</sys_package><sys_policy/><sys_scope display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</sys_scope><sys_update_name>sys_scope_privilege_d4ec2e8883d43210b4d2bfc6feaad3ee</sys_update_name><sys_updated_by>richard.selby</sys_updated_by><sys_updated_on>2025-09-25 15:52:09</sys_updated_on><target_name>sn_si_incident</target_name><target_scope display_value="Security Incident Response">82878663ff123100158bffffffffff67</target_scope><target_type>sys_db_object</target_type></sys_scope_privilege></record_update>]]></payload>
+<payload_hash>-920904701</payload_hash>
+<remote_update_set display_value="xMatters Security Incident Response">1f75768483183210b4d2bfc6feaad390</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>richard.selby</sys_created_by>
+<sys_created_on>2025-09-25 16:29:46</sys_created_on>
+<sys_id>1b75768483183210b4d2bfc6feaad391</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>19981932b690000001</sys_recorded_at>
+<sys_updated_by>richard.selby</sys_updated_by>
+<sys_updated_on>2025-09-25 16:29:46</sys_updated_on>
+<table/>
+<target_name>sn_si_incident</target_name>
+<type>Cross scope privilege</type>
+<update_domain>global</update_domain>
+<update_guid>1cec2e8869d43210cd6d2086046c4eef</update_guid>
+<update_guid_history>1cec2e8869d43210cd6d2086046c4eef:-920904701</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Everbridge Flow Designer">8018d948dbed56102b317f93e2961979</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_79af52c483943210b4d2bfc6feaad31c</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script"&gt;&lt;sys_script action="INSERT_OR_UPDATE"&gt;&lt;abort_action&gt;false&lt;/abort_action&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;action_delete&gt;false&lt;/action_delete&gt;&lt;action_insert&gt;true&lt;/action_insert&gt;&lt;action_query&gt;false&lt;/action_query&gt;&lt;action_update&gt;true&lt;/action_update&gt;&lt;active&gt;true&lt;/active&gt;&lt;add_message&gt;false&lt;/add_message&gt;&lt;advanced&gt;true&lt;/advanced&gt;&lt;change_fields&gt;false&lt;/change_fields&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;collection&gt;sn_si_incident&lt;/collection&gt;&lt;condition/&gt;&lt;description/&gt;&lt;execute_function&gt;false&lt;/execute_function&gt;&lt;filter_condition table="sn_si_incident"&gt;stateVALCHANGES^priorityIN1,2,3^NQassignment_groupVALCHANGES^priorityIN1,2,3^assignment_groupISNOTEMPTY^EQ&lt;item endquery="false" field="state" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/&gt;&lt;item display_value="1,2,3" endquery="false" field="priority" goto="false" newquery="false" operator="IN" or="false" value="1,2,3"/&gt;&lt;item endquery="false" field="assignment_group" goto="false" newquery="true" operator="VALCHANGES" or="false" value=""/&gt;&lt;item display_value="1,2,3" endquery="false" field="priority" goto="false" newquery="false" operator="IN" or="false" value="1,2,3"/&gt;&lt;item endquery="false" field="assignment_group" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/&gt;&lt;item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/&gt;&lt;/filter_condition&gt;&lt;is_rest&gt;false&lt;/is_rest&gt;&lt;message/&gt;&lt;name&gt;xMatters SIR&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;priority&gt;100&lt;/priority&gt;&lt;rest_method/&gt;&lt;rest_method_text/&gt;&lt;rest_service/&gt;&lt;rest_service_text/&gt;&lt;rest_variables/&gt;&lt;role_conditions/&gt;&lt;script&gt;&lt;![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// Set up config
+	let myConfig = {
+	"triggerProfile": "Security Incident",// N.B.Matches name in Trigger Profile
+	"signalMode": "State",
+	"alertPriority": "Medium"
+	};
+
+	// Overwrite signalMode for Assignment
+	if (current.operation()=='update' &amp;&amp; current.assignment_group.changes()){
+		myConfig.signalMode=='Assignment';
+	}
+
+	// Overwrite xMatters alert priority
+	if (current.priority==1){
+		myConfig.alertPriority=='High';
+	}
+
+	// Call Everbridge Flow Designer client, passing in the config
+	let FlowDesignerClient = new x_xma_eb_fd.EBClient(config = myConfig);
+	FlowDesignerClient.triggerWorkflow(current, previous);
+
+})(current, previous);]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;richard.selby&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-09-25 15:14:50&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;79af52c483943210b4d2bfc6feaad31c&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;xMatters SIR&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Everbridge Flow Designer" source="x_xma_eb_fd"&gt;8018d948dbed56102b317f93e2961979&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Everbridge Flow Designer"&gt;8018d948dbed56102b317f93e2961979&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_79af52c483943210b4d2bfc6feaad31c&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;richard.selby&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-09-25 16:03:08&lt;/sys_updated_on&gt;&lt;template/&gt;&lt;when&gt;before&lt;/when&gt;&lt;/sys_script&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=79af52c483943210b4d2bfc6feaad31c"/&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-404259214</payload_hash>
+<remote_update_set display_value="xMatters Security Incident Response">1f75768483183210b4d2bfc6feaad390</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>richard.selby</sys_created_by>
+<sys_created_on>2025-09-25 16:29:46</sys_created_on>
+<sys_id>db75768483183210b4d2bfc6feaad391</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>199819d38f50000001</sys_recorded_at>
+<sys_updated_by>richard.selby</sys_updated_by>
+<sys_updated_on>2025-09-25 16:29:46</sys_updated_on>
+<table>sn_si_incident</table>
+<target_name>xMatters SIR</target_name>
+<type>Business Rule</type>
+<update_domain>global</update_domain>
+<update_guid>856f2a4c0ad4321094fc8f821ecb59f7</update_guid>
+<update_guid_history>856f2a4c0ad4321094fc8f821ecb59f7:-404259214,02c56600ccd432106007b150de697990:511485741,a154268c32943210840de950de947000:-1411538929</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
