@@ -23,17 +23,17 @@ When a new Security Incident of a certain priority gets created, ServiceNow will
 # Installation
 
 ## xMatters set up
-1. Login to xMatters, navigate to the Workflow tab and import the [ServiceNow Security Incident Alert.zip]() workflow. Details [here](https://help.xmatters.com/ondemand/xmodwelcome/workflows/manage-workflows.htm#ImportExport)
+1. Login to xMatters, navigate to the Workflow tab and import the [ServiceNow Security Incident Alert.zip](ServiceNow-Security-Incident-Alert.zip) workflow. Details [here](https://help.xmatters.com/ondemand/xmodwelcome/workflows/manage-workflows.htm#ImportExport)
 2. Click on the **ServiceNow Security Incident Alert** workflow and then click the Flow Designer tab. Click on the **Security Incidents** canvas and then double click the **ServiceNow Record Alerts Security Incident [sn_si_incident]** Trigger step.
 3. Click into the Endpoint Tab in the Trigger and set up your ServiceNow endpoint [following these instructions](https://help.xmatters.com/ondemand/integrationbuilder/configure-endpoints.htm?cshid=ServiceNowEndpoint#ServiceNowAuth).
-4. In the Endpoint Tab, confirm ServiceNow table "Security Incident [sn_si_incident] is selected.
+4. In the Endpoint Tab, if you don't see the "Security Incident" table, double check the ServiceNow API user has the sn_si.admin rol. Confirm ServiceNow table "Security Incident [sn_si_incident]" is selected.
 	
 <img width="719" height="384" alt="image" src="https://github.com/user-attachments/assets/27c91616-4431-42dc-9295-295f6efcdf02" />
 
-5. Click the Settings tab and select Basic Authentication and Copy the URL and keep for future reference.
+5. Click the Settings tab, select Basic Authentication, copy the URL and keep for future reference.
 
 ## ServiceNow set up
-Option to use the ServiceNow XML update set and Skip to Step 7. To manually create a business rule, follow steps below.
+If you have already imported the ServiceNow XML update set skip to Step 7. To manually create a business rule, follow the steps below.
 
 1. Navigate to System Definitions > Business Rules
 2. Create a new Business Rule
@@ -55,7 +55,7 @@ Option to use the ServiceNow XML update set and Skip to Step 7. To manually crea
 <img width="1730" height="1272" alt="image" src="https://github.com/user-attachments/assets/e17842a8-4a38-45c0-9845-9a1aea46c8dd" />
 
 4. Open "Advanced" tab; copy and paste the script below
-   Make note of the triggerProfile. The name will be used in step 9. 
+   Make note of the triggerProfile value. The name will be used in step 9. 
    ```
    (function executeRule(current, previous /*null when async*/) {
 
@@ -81,13 +81,13 @@ Option to use the ServiceNow XML update set and Skip to Step 7. To manually crea
 	FlowDesignerClient.triggerWorkflow(current, previous);
 	})(current, previous);
    ```
-6. Click "Submit" to save the business rule
-7. Navigate to System Applications > Application Cross-Scope Access
-8. Create new Cross scope privilege with the values in the screenshot
+5.Click "Submit" to save the business rule
+6. Navigate to System Applications > Application Cross-Scope Access
+7. Create new cross scope privilege with the values in the screenshot
 <img width="1874" height="568" alt="image" src="https://github.com/user-attachments/assets/2c940d9c-19d4-49b9-b708-ef6e7831507d" />
 
-10. Navigate to Everbridge Flow Designer > Global Settings > Trigger Profiles
-11. Click Create New
+8. Navigate to Everbridge Flow Designer > Global Settings > Trigger Profiles
+9. Click Create New
    * Name: The Trigger Profiles' name must match the "triggerProfile" value from step 4 (i.e Security Incident)
    * Credentials: Select the correct xMatters user credentials configured for the integration. This will enable a dropdown menu for the Workflow
    * Workflow: Select "ServiceNow Security Incident Alert" workflow
@@ -95,10 +95,10 @@ Option to use the ServiceNow XML update set and Skip to Step 7. To manually crea
    * Default Alert Property: Medium
    * Default Signal Mode: (Optional)
    * Additional Recipients: (Optional)
-   * ServiceNow API User: Select API user (this should be set up as the prerequisition steps)
+   * ServiceNow API User: Select API user ([see pre req](https://github.com/dtopham802/SNOW-Security-Incident-Alerts))
 <img width="2084" height="1320" alt="image" src="https://github.com/user-attachments/assets/9519dba1-87f1-4f4d-a49b-c043393a35a3" />
 
-11. Click Submit to Save
+10. Click Submit to Save
 
 ## TEST
 1. Navigate to Security Incident in the ServiceNow Navigator
