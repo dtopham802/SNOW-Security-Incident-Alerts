@@ -1,72 +1,104 @@
-# Azure
-Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers. This integration adds the power of the xMatters platform to Azure Monitoring. 
+# ServiceNow Security Incident Alerts
+ServiceNow Security Incidents are security issues, like threats or vulnerabilities, within an organization that are managed through a structured, automated response workflow. The application integrates with xMatters to ingest alerts, prioritize issues using intelligent workflows and automation, and provides on-call notifications for investigation and remediation. xMatters helps to contain, eradicate, and recover from security events, minimizing impact by coordinating responses across IT and security teams 
 
 <kbd>
   <img src="https://github.com/xmatters/xMatters-Labs/raw/master/media/disclaimer.png">
 </kbd>
 
 # Pre-Requisites
-* [Azure account](https://azure.microsoft.com/en-us/)
+* [ServiceNow Instance with Security Incidents Enabled](https://www.servicenow.com/products/security-incident-response.html)
+* Have the [Everbridge Flow Designer app](https://store.servicenow.com/store/app/4f5cfd441b172e50c43e65b2604bcbad) installed and configured in your ServiceNow instance
+* [Follow instructions](https://help.xmatters.com/ondemand/flowdesigner/servicenow-record-alerts.htm#InstallApp) and complete setup steps: prepare ServiceNow, Configure xMatters, and Configure the Everbridge Flow Designer app in ServiceNow
 * xMatters account - If you don't have one, [get one](https://www.xmatters.com)!
+* ServiceNow API User with sn_si.admin role since the integration is reading and writing to the Security incident table.
 
 # Files
-* [AzureMonitor.zip](AzureMonitor.zip) - The workflow zip for Azure Monitoring.
+* [ServiceNow Security Incident Alert.zip]() - The workflow zip for ServiceNow Security Incident Alerts.
 
 
 # How it works
-When a Monitoring Alert is triggered, the xMatters Action fires to the Flow Designer HTTP Trigger which triggers the flow. The flow inspects the **Monitor Condition** field of the alert. If the field is "Resolved", the flow branches and retrieves the Active events with a matching `ID` field in the Get Events step and then terminates any events found. If the **Monitor Condition** is any other value, a new event is generated targeting the recipients defined in the **Create xMatters Event** step. 
-
-All these monitoring services are currently supported:
-1. Platform
-2. Log Analytics
-3. Application Insights
-4. Activity Log - Administrative
-5. Activity Log - Policy
-6. Activity Log - Autoscale
-7. Activity Log - Security
-8. ServiceHealth
-9. Resource Health
-
-Azure Monitor alert schemas can be found [here](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-common-schema-definitions).
+When a new Security Incident of a certain priority gets created, ServiceNow will trigger the business rule to send all the previous and current values of all the columns within the Security Incident table to the Everbridge Flow Designer app to then trigger an xMatters workflow. When the workflow is triggered, an on-call notification will be triggered to the assignment group and/or to the default recipients configured in the Trigger Profile in the app.
 
 # Installation
 
 
 ## xMatters set up
-1. Login to xMatters, navigate to the Workflow tab and import the [AzureMonitor.zip](AzureMonitor.zip) workflow. Details [here](https://help.xmatters.com/ondemand/xmodwelcome/workflows/manage-workflows.htm#ImportExport)
-2. Click on the **Azure Monitor** workflow and then click the Flows tab. Click on the **Integrated Alert** canvas and then double click the **Integrated Alert - Azure Monitor Inbound** HTTP inbound step. 
-3. Copy the URL and keep for future reference. 
+1. Login to xMatters, navigate to the Workflow tab and import the [ServiceNow Security Incident Alert.zip]() workflow. Details [here](https://help.xmatters.com/ondemand/xmodwelcome/workflows/manage-workflows.htm#ImportExport)
+2. Click on the **ServiceNow Security Incident Alert** workflow and then click the Flow Designer tab. Click on the **Security Incidents** canvas and then double click the **ServiceNow Record Alerts Security Incident [sn_si_incident]** Trigger step.
+3. Click into the Endpoint Tab in the Trigger and set up your ServiceNow endpoint [following these instructions](https://help.xmatters.com/ondemand/integrationbuilder/configure-endpoints.htm?cshid=ServiceNowEndpoint#ServiceNowAuth).
+4. In the Endpoint Tab, confirm ServiceNow table "Security Incident [sn_si_incident] is selected.
+	
+<img width="719" height="384" alt="image" src="https://github.com/user-attachments/assets/27c91616-4431-42dc-9295-295f6efcdf02" />
 
+5. Click the Settings tab and select Basic Authentication and Copy the URL and keep for future reference.
 
-## Azure Monitoring set up
-1. Login to the Azure Portal and navigate to the Monitoring Service. 
-2. Click on the Manage Alert Rules:
+## ServiceNow set up
+Option to use the ServiceNow XML update set and Skip to Step 7. To manually create a business rule, follow steps below.
 
-<kbd>
-  <img src="media/Monitoring.png" height="600">
-</kbd>
+1. Navigate to System Definitions > Business Rules
+2. Create a new Business Rule
+   * Name: Enter a name for your business rule (i.e xMatters Security Incident Alerts)
+   * Application: Everbridge Flow Designer
+   * Table: Security Incident [sn_si_incident]
+   * Enable Active
+   * Enable Advanced
+   
+<img width="2280" height="470" alt="image" src="https://github.com/user-attachments/assets/134c4dc0-c2e5-4d7c-977f-4f5f2d7e4efe" />
 
-3. Create a new Alert Rule with the appropriate metric to alert on. In the Actions section, if you do not have an action group created, create a new one with the appropriate values. Then add a new Action with a name indicating xMatters. Select an Action Type of **Webhook** and paste in the integration url from above. Also make sure to set the **common alert schema** switch to Yes. 
+3. Under "When to run" tab
+   * When: Before
+   * Order: 100
+   * Enable Insert
+   * Enable Update
+   * Add filter conditions as shown in image below
+	
+<img width="1730" height="1272" alt="image" src="https://github.com/user-attachments/assets/e17842a8-4a38-45c0-9845-9a1aea46c8dd" />
 
-**Note** if you would like to set the recipients here, you can append `&recipients=MY_AWESOME_RECIPIENT`. For example:
+4. Open "Advanced" tab; copy and paste the script below
+   Make note of the triggerProfile. The name will be used in step 9. 
+   ```
+   (function executeRule(current, previous /*null when async*/) {
 
-```
-https://acme.xmatters.com/api/integration/1/functions/UUID-GOES-HERE/triggers?apiKey=API-KEY-GOES-HERE&recipients=MY_AWESOME_RECIPIENT
-```
-Alternatively, recipients can be defined using [Subscriptions](https://help.xmatters.com/ondemand/userguide/receivingalerts/subscriptions/howtousesubscriptions.htm)
+	// Set up config
+	let myConfig = {
+	"triggerProfile": "Security Incident",// N.B.Matches name in Trigger Profile
+	"signalMode": "State",
+	"alertPriority": "Medium"
+	};
 
-<kbd>
-	<img src="media/Actions.png" width="300">
-</kbd>
+	// Overwrite signalMode for Assignment
+	if (current.operation()=='update' && current.assignment_group.changes()){
+		myConfig.signalMode=='Assignment';
+	}
 
-4. Complete saving the Alert Rule by clicking Ok a million times. 
+	// Overwrite xMatters alert priority
+	if (current.priority==1){
+		myConfig.alertPriority=='High';
+	}
 
-# Testing
-Testing will depend on the criteria used for the Alert Rule, so do what needs to happen to trigger the rule. When the alert shows as firing, the webhook will be triggered and a new event will be created targeting the recipients. 
+	// Call Everbridge Flow Designer client, passing in the config
+	let FlowDesignerClient = new x_xma_eb_fd.EBClient(config = myConfig);
+	FlowDesignerClient.triggerWorkflow(current, previous);
+	})(current, previous);
+   ```
+6. Click "Submit" to save the business rule
+7. SOMETHING ABOUT THE APPLICATION SCOPE
+8. Navigate to Everbridge Flow Designer > Global Settings > Trigger Profiles
+9. Click Create New
+   * Name: The Trigger Profiles' name must match the "triggerProfile" value from step 4 (i.e Security Incident)
+   * Credentials: Select the correct xMatters user credentials configured for the integration. This will enable a dropdown menu for the Workflow
+   * Workflow: Select "ServiceNow Security Incident Alert" workflow
+   * Trigger URL: Select "ServiceNow Record Alerts Security Incident [sn_si_incident]"
+   * Default Alert Property: Medium
+   * Default Signal Mode: (Optional)
+   * Additional Recipients: (Optional)
+   * ServiceNow API User: Select API user (this should be set up as the prerequisition steps)
+<img width="2084" height="1320" alt="image" src="https://github.com/user-attachments/assets/9519dba1-87f1-4f4d-a49b-c043393a35a3" />
 
+10. Click Submit to Save
 
-# Troubleshooting
-The first place to check is the Alerts section in the Monitoring service. If the alert has not fired the xMatters integration will not be triggered. 
+## TEST
+1. Navigate to Security Incident in the ServiceNow Navigator
+2. Create a new Security Incident. Ensure the Priority is either Moderate, High, or Critical and the Assignment Group exsists in xMatters.
+<img width="720" height="350" alt="image" src="https://github.com/user-attachments/assets/0b6bce3f-1a97-421e-bcb0-06fdc547780d" />
 
-If the Alert has fired in Azure Monitoring, the next place to check is the Activity stream in Flow Designer. After logging in to xMatters, navigate to the **Workflows** tab, then the **Azure Monitor** workflow and on the flows tab, click the **Integrated Alert** canvas. From there click the Activity Stream in the upper right corner. Verify the new entries there. If they do not correspond to the Alert just fired, then Azure is not communicating with xMatters properly, so check the Action in the Action Group for the Alert Rule. 
-If the entry is in the Activity Stream, then read the log tab for any errors. If none are found, navigate to the **Reports** tab and see if there is a new event. If the event is there, but you were not notified, verify the `recipients` portion of the event properties. 
