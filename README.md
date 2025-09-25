@@ -8,7 +8,7 @@ ServiceNow Security Incidents are security issues, like threats or vulnerabiliti
 # Pre-Requisites
 * [ServiceNow Instance with Security Incidents Enabled](https://www.servicenow.com/products/security-incident-response.html)
 * Have the [Everbridge Flow Designer app](https://store.servicenow.com/store/app/4f5cfd441b172e50c43e65b2604bcbad) installed and configured in your ServiceNow instance
-* [Follow instructions](https://help.xmatters.com/ondemand/flowdesigner/servicenow-record-alerts.htm#InstallApp) and complete setup steps: prepare ServiceNow, Configure xMatters, and Configure the Everbridge Flow Designer app in ServiceNow
+* [Follow instructions](https://help.xmatters.com/ondemand/flowdesigner/servicenow-record-alerts.htm#InstallApp) and complete setup steps: Prepare ServiceNow, Configure xMatters, and Configure the Everbridge Flow Designer app in ServiceNow
 * xMatters account - If you don't have one, [get one](https://www.xmatters.com)!
 * ServiceNow API User with sn_si.admin role since the integration is reading and writing to the Security incident table.
 
