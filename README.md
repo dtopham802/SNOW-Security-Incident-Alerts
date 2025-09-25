@@ -13,14 +13,14 @@ ServiceNow Security Incidents are security issues, like threats or vulnerabiliti
 * ServiceNow API User with sn_si.admin role since the integration is reading and writing to the Security incident table.
 
 # Files
-* [ServiceNow Security Incident Alert.zip]() - The workflow zip for ServiceNow Security Incident Alerts.
+* [ServiceNow Security Incident Alert.zip](ServiceNow-Security-Incident-Alert.zip) - The workflow zip for ServiceNow Security Incident Alerts.
+* [ServiceNow Update Set](sys_update_set_xmatters_sir.xml) - The update set which includes the Business rule
 
 
 # How it works
 When a new Security Incident of a certain priority gets created, ServiceNow will trigger the business rule to send all the previous and current values of all the columns within the Security Incident table to the Everbridge Flow Designer app to then trigger an xMatters workflow. When the workflow is triggered, an on-call notification will be triggered to the assignment group and/or to the default recipients configured in the Trigger Profile in the app.
 
 # Installation
-
 
 ## xMatters set up
 1. Login to xMatters, navigate to the Workflow tab and import the [ServiceNow Security Incident Alert.zip]() workflow. Details [here](https://help.xmatters.com/ondemand/xmodwelcome/workflows/manage-workflows.htm#ImportExport)
@@ -82,9 +82,12 @@ Option to use the ServiceNow XML update set and Skip to Step 7. To manually crea
 	})(current, previous);
    ```
 6. Click "Submit" to save the business rule
-7. SOMETHING ABOUT THE APPLICATION SCOPE
-8. Navigate to Everbridge Flow Designer > Global Settings > Trigger Profiles
-9. Click Create New
+7. Navigate to System Applications > Application Cross-Scope Access
+8. Create new Cross scope privilege with the values in the screenshot
+<img width="1874" height="568" alt="image" src="https://github.com/user-attachments/assets/2c940d9c-19d4-49b9-b708-ef6e7831507d" />
+
+10. Navigate to Everbridge Flow Designer > Global Settings > Trigger Profiles
+11. Click Create New
    * Name: The Trigger Profiles' name must match the "triggerProfile" value from step 4 (i.e Security Incident)
    * Credentials: Select the correct xMatters user credentials configured for the integration. This will enable a dropdown menu for the Workflow
    * Workflow: Select "ServiceNow Security Incident Alert" workflow
@@ -95,7 +98,7 @@ Option to use the ServiceNow XML update set and Skip to Step 7. To manually crea
    * ServiceNow API User: Select API user (this should be set up as the prerequisition steps)
 <img width="2084" height="1320" alt="image" src="https://github.com/user-attachments/assets/9519dba1-87f1-4f4d-a49b-c043393a35a3" />
 
-10. Click Submit to Save
+11. Click Submit to Save
 
 ## TEST
 1. Navigate to Security Incident in the ServiceNow Navigator
