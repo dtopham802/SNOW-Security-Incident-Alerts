@@ -96,7 +96,8 @@ If you have already imported the ServiceNow XML update set skip to Step 7. To ma
    * Default Signal Mode: (Optional)
    * Additional Recipients: (Optional)
    * ServiceNow API User: Select API user ([see pre req](https://github.com/dtopham802/SNOW-Security-Incident-Alerts))
-<img width="2084" height="1320" alt="image" src="https://github.com/user-attachments/assets/9519dba1-87f1-4f4d-a49b-c043393a35a3" />
+<img width="2660" height="1214" alt="Trigger" src="https://github.com/user-attachments/assets/ec0bd2f1-ae7f-49e3-a8cc-67cafb776a63" />
+
 
 10. Click Submit to Save
 
