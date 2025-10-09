@@ -20,10 +20,13 @@ ServiceNow Security Incidents are security issues, like threats or vulnerabiliti
 # How it works
 When a new Security Incident of a certain priority gets created, ServiceNow will trigger the business rule to send all the previous and current values of all the columns within the Security Incident table to the Everbridge Flow Designer app to then trigger an xMatters workflow. When the workflow is triggered, an on-call notification will be triggered to the assignment group and/or to the default recipients configured in the Trigger Profile in the app.
 
+<img width="2898" height="1139" alt="ServiceNow SIR Alert Workflow" src="https://github.com/user-attachments/assets/6bc656da-2d09-438c-9380-fcecd8da2010" />
+
+
 # Installation
 
 ## xMatters set up
-1. Login to xMatters, navigate to the Workflow tab and import the [ServiceNow Security Incident Alert.zip](ServiceNow-Security-Incident-Alert.zip) workflow. Details [here](https://help.xmatters.com/ondemand/xmodwelcome/workflows/manage-workflows.htm#ImportExport)
+1. Login to xMatters, navigate to the Workflow tab and import the [ServiceNowSecurityIncidentAlert.zip](ServiceNowSecurityIncidentAlert.zip) workflow. Details [here](https://help.xmatters.com/ondemand/xmodwelcome/workflows/manage-workflows.htm#ImportExport)
 2. Click on the **ServiceNow Security Incident Alert** workflow and then click the Flow Designer tab. Click on the **Security Incidents** canvas and then double click the **ServiceNow Record Alerts Security Incident [sn_si_incident]** Trigger step.
 3. Click into the Endpoint Tab in the Trigger and set up your ServiceNow endpoint [following these instructions](https://help.xmatters.com/ondemand/integrationbuilder/configure-endpoints.htm?cshid=ServiceNowEndpoint#ServiceNowAuth).
 4. In the Endpoint Tab, if you don't see the "Security Incident" table, double check the ServiceNow API user has the sn_si.admin rol. Confirm ServiceNow table "Security Incident [sn_si_incident]" is selected.
@@ -81,8 +84,10 @@ If you have already imported the ServiceNow XML update set skip to Step 7. To ma
 	FlowDesignerClient.triggerWorkflow(current, previous);
 	})(current, previous);
    ```
-5.Click "Submit" to save the business rule
+ 5.Click "Submit" to save the business rule
+
 6. Navigate to System Applications > Application Cross-Scope Access
+
 7. Create new cross scope privilege with the values in the screenshot
 <img width="1874" height="568" alt="image" src="https://github.com/user-attachments/assets/2c940d9c-19d4-49b9-b708-ef6e7831507d" />
 
