@@ -1,5 +1,5 @@
 # ServiceNow Security Incident Alerts
-ServiceNow Security Incidents are security issues, like threats or vulnerabilities, within an organization that are managed through a structured, automated response workflow. The application integrates with xMatters to ingest alerts, prioritize issues using intelligent workflows and automation, and provides on-call notifications for investigation and remediation. xMatters helps to contain, eradicate, and recover from security events, minimizing impact by coordinating responses across IT and security teams 
+ServiceNow Security Incidents are security issues, like threats or vulnerabilities, within an organization that are managed through a structured, automated response workflow. This is an example of extending the existing ServiceNow xMatters application to ingest alerts, prioritize issues using intelligent workflows and automation, and provides on-call notifications for investigation and remediation. xMatters helps to contain, eradicate, and recover from security events, minimizing impact by coordinating responses across IT and security teams 
 
 <kbd>
   <img src="https://github.com/xmatters/xMatters-Labs/raw/master/media/disclaimer.png">
@@ -36,7 +36,7 @@ When a new Security Incident of a certain priority gets created, ServiceNow will
 5. Click the Settings tab, select Basic Authentication, copy the URL and keep for future reference.
 
 ## ServiceNow set up
-If you have already imported the ServiceNow XML update set skip to Step 7. To manually create a business rule, follow the steps below.
+If you have already imported the ServiceNow XML update set skip to Step 8. To manually create a business rule, follow the steps below.
 
 1. Navigate to System Definitions > Business Rules
 2. Create a new Business Rule
@@ -84,7 +84,7 @@ If you have already imported the ServiceNow XML update set skip to Step 7. To ma
 	FlowDesignerClient.triggerWorkflow(current, previous);
 	})(current, previous);
    ```
- 5.Click "Submit" to save the business rule
+5. Click "Submit" to save the business rule
 
 6. Navigate to System Applications > Application Cross-Scope Access
 
